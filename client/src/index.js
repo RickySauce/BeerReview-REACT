@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import SignUp from './user/SignUp'
+import SignUpContainer from './user/SignUpContainer'
 import registerServiceWorker from './registerServiceWorker';
 import setUser from './reducers/setUser'
 import { Provider } from 'react-redux';
@@ -18,7 +18,7 @@ ReactDOM.render(
     <Router>
       <React.Fragment>
         <Route path="/" component={App} />
-        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/signup" component={SignUpContainer} />
       </React.Fragment>
     </Router>
   </Provider>,

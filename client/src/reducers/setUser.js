@@ -1,4 +1,4 @@
-export default function setUser(state = {user: {}}, action){
+export default function setUser(state = {user: ''}, action){
   switch (action.type) {
 
     case 'SIGN_UP':

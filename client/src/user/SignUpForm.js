@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 
-
-class SignUp extends Component {
+class SignUpForm extends Component {
 
   state = {
     username: '',
@@ -22,6 +20,7 @@ class SignUp extends Component {
     fetch('/users', {
     headers: {
       'Accept': 'application/json',
+      body: JSON.stringify(this.state),
       'Content-Type': 'application/json'
     },
     method: "POST"
@@ -70,8 +69,4 @@ class SignUp extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  signUp: user => dispatch({type: 'SIGN_UP', user})
-})
-
-export default connect(null, mapDispatchToProps)(SignUp);
+export default SignUpForm;
