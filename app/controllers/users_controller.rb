@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
 
   def create
-    binding.pry
-    @user = User.new(user_params)
-    binding.pry
+    @user = User.new
     if @user.save
       render :json => @user, status: 201
    else
@@ -21,7 +19,7 @@ class UsersController < ApplicationController
 private
 
   def user_params
-     params.require(:user).permit(
+     params.require("user").permit(
        :username,
        :email,
        :password,

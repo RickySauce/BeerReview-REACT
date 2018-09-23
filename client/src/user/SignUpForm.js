@@ -11,22 +11,28 @@ class SignUpForm extends Component {
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.id]: event.target.value
     })
   }
 
   handleSubmit = (event) => {
   event.preventDefault()
+  let data = JSON.stringify({user: this.state})
     fetch('/users', {
     headers: {
       'Accept': 'application/json',
-      body: JSON.stringify(this.state),
       'Content-Type': 'application/json'
     },
-    method: "POST"
+    method: "POST",
+    body: data
 })
     .then(res => res.json())
-    .then(json => this.setState({data: json}))
+    .then(json => {
+      console.log(this.state)
+      let state = json.errors
+       this.setState({state})
+       console.log(this.state)
+    })
   }
 
   render(){
@@ -36,29 +42,29 @@ class SignUpForm extends Component {
         <form onSubmit={this.handleSubmit}>
         <label>Username: </label>
         <input
-        id="user[username]"
-        name="username"
+        id="username"
+        name="user[username]"
         type="text"
         value={this.state.username}
         onChange={this.handleChange}/><br/><br/>
         <label>Email: </label>
         <input
-        id="user[email]"
-        name="email"
+        id="email"
+        name="user[email]"
         type="email"
         value={this.state.email}
         onChange={this.handleChange}/><br/><br/>
         <label>Password: </label>
         <input
-        id="user[password]"
-        name="password"
+        id="password"
+        name="user[password]"
         type="password"
         value={this.state.password}
         onChange={this.handleChange}/><br/><br/>
         <label>Password Confirmation: </label>
         <input
-        id="user[password_confirmation]"
-        name="password_confirmation"
+        id="password_confirmation"
+        name="user[password_confirmation]"
         type="password"
         value={this.state.password_confirmation}
         onChange={this.handleChange}/><br/><br/>
