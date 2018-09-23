@@ -1,0 +1,15 @@
+<%= form_for @user do |f| %>
+  <b> Username: </b>
+  <%= f.text_field :username %> <span id="username_errors"></span>
+  <br><br>
+  <b> Email Address: </b>
+  <%= f.email_field :email %> <span id="email_errors"></span>
+  <br><br>
+  <b> Password: </b>
+  <%= f.password_field :password %> <
+  <br><br>
+  <b> Password Confirmation: </b>
+  <%= f.password_field :password_confirmation %>
+  <br><br>
+  <%= f.submit 'Create User'%>
+  <%end%>

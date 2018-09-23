@@ -1,13 +1,10 @@
 class UsersController < ApplicationController
 
-  def new
-    @user = User.new
-  end
-
   def create
+    binding.pry
     @user = User.new(user_params)
+    binding.pry
     if @user.save
-      session[:user_id] = @user.id
       render :json => @user, status: 201
    else
      render :json => { :errors => @user.errors}
@@ -16,20 +13,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    redirect_to root_path if @user.nil?
+    render :json => @user
   end
 
-    def review_exists
-     current_user ? @review = Review.find_review(current_user.id, params["id"]).first : @review = nil
-    if @review.blank?
-      render json: @review, status: 403
-    else
-      render json: @review, status: 200
-    end
-    # respond_to do |format|
-    #   format.html {redirect_to root_path}
-    # end
-  end
 
 
 private

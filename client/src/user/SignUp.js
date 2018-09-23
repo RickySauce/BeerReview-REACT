@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
 
 class SignUp extends Component {
 
@@ -15,11 +17,24 @@ class SignUp extends Component {
     })
   }
 
+  handleSubmit = (event) => {
+  event.preventDefault()
+    fetch('/users', {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST"
+})
+    .then(res => res.json())
+    .then(json => this.setState({data: json}))
+  }
+
   render(){
     return(
       <div>
         <h3>Sign Up Here!</h3>
-        <form>
+        <form onSubmit={this.handleSubmit}>
         <label>Username: </label>
         <input
         id="user[username]"
@@ -55,4 +70,8 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+  signUp: user => dispatch({type: 'SIGN_UP', user})
+})
+
+export default connect(null, mapDispatchToProps)(SignUp);
