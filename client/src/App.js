@@ -15,7 +15,6 @@ class App extends Component {
         </header>
         <NavBar logOut={this.handleClick}/>
         <p className="App-intro">
-          Cheese Fries
         </p>
       </div>
     );

@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 const NavBar = (props) =>
   <div>
-  {console.log(props)}
   <NavLink
      to="/"
    >Home</NavLink>
@@ -19,7 +18,7 @@ const NavBar = (props) =>
      >Log In
      </NavLink>
      <NavLink
-        // onClick={this.props.logOut({user: ''})}
+        // onClick={this.props.logOut}
         to="/logout"
       >Log Out
       </NavLink>

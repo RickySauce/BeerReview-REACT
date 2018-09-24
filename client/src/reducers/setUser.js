@@ -1,18 +1,17 @@
-export default function setUser(state = {user: ''}, action){
+export default function setUser(state = {user: ''}, action) {
   switch (action.type) {
 
     case 'SIGN_UP':
-      return action.user;
+      return {user: action.user};
 
     case 'LOG_IN':
-      return action.user;
+        return {user: action.user};
 
     case 'LOG_OUT':
-      return action.user;
-
+      return {user: ''}
 
     default:
       return state;
 
-  };
+  }
 };
