@@ -30,7 +30,11 @@ class SignUpForm extends Component {
     .then(res => res.json())
     .then(json => {
       const errors = json.errors
-      this.setState({errors})
+      if (errors !== undefined){
+        this.setState({errors});
+      } else {
+        this.props.signUp(json);
+      };
     })
   }
 

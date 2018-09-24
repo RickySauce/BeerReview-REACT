@@ -1,8 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const NavBar = () =>
+
+
+const NavBar = (props) =>
   <div>
+  {console.log(props)}
   <NavLink
      to="/"
    >Home</NavLink>
@@ -15,9 +19,15 @@ const NavBar = () =>
      >Log In
      </NavLink>
      <NavLink
+        // onClick={this.props.logOut({user: ''})}
         to="/logout"
       >Log Out
       </NavLink>
   </div>
 
-export default NavBar;
+  const mapDispatchToProps = dispatch => ({
+    logOut:  user => dispatch({type: 'LOG_OUT', user})
+  })
+
+
+export default connect(null, mapDispatchToProps) (NavBar);

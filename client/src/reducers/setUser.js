@@ -8,12 +8,11 @@ export default function setUser(state = {user: ''}, action){
       return action.user;
 
     case 'LOG_OUT':
-      state = {user: {}}
-      return state;
+      return action.user;
 
 
     default:
       return state;
 
-  }
+  };
 };
