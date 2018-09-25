@@ -23,6 +23,14 @@ const NavBar = (props) =>
         to="/logout"
       >Log Out
       </NavLink>
+      <NavLink
+         to="/reviews"
+       >Reviews
+       </NavLink>
+       <NavLink
+          to="/beers"
+        >Beers
+        </NavLink>
   </div>
 
   const mapDispatchToProps = dispatch => ({

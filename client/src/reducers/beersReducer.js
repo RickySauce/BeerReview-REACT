@@ -1,4 +1,4 @@
-export default function setUser(state = {user: ''}, action) {
+export default function beersReducer(state = {beers: []}, action) {
   switch (action.type) {
 
     case 'SIGN_UP':
