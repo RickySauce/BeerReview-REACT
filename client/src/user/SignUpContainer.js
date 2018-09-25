@@ -6,11 +6,12 @@ import UserProfile from './UserProfile'
 class SignUpContainer extends Component {
 
   renderComponent = () => {
-    return this.props.user != false ? <UserProfile user={this.props.user}/>  : <SignUpForm signUp={this.props.signUp}/>
+    return this.props.user.user != false ? <UserProfile user={this.props.user}/>  : <SignUpForm signUp={this.props.signUp}/>
   }
 
 
   render(){
+    console.log(this.props.user)
     return(
       <div>
       {this.renderComponent()}

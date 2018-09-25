@@ -22,7 +22,7 @@ ReactDOM.render(
         <Route path="/" component={App} />
         <Route exact path="/signup" component={SignUpContainer} />
         <Route exact path="/login" component={LogInContainer} />
-        <Route exact path="/beers" component={BeerContainer} />
+        <Route path="/beers" render={routerProps => <BeerContainer {...routerProps}/>} />
       </React.Fragment>
     </Router>
   </Provider>,
