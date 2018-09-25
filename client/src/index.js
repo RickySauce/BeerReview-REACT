@@ -19,7 +19,6 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <React.Fragment>
-      {console.log(store.getState())}
         <Route path="/" component={App} />
         <Route exact path="/signup" component={SignUpContainer} />
         <Route exact path="/login" component={LogInContainer} />

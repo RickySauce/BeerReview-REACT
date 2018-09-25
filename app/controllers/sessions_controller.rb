@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       @message = "Username does not exist"
       render :json => { :message => @message}
     else
-      if !@user.authenticate(params["login"]["password"])
+      if !@user.authenticate(params["user"]["password"])
           @message = "Incorrect Password"
           render :json => {:message => @message}
       else

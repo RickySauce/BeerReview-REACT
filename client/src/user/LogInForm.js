@@ -28,36 +28,25 @@ class SignUpForm extends Component {
     .then(res => res.json())
     .then(json => {
       const message = json.message
-      debugger;
       if (message !== undefined){
-        this.setState({message});
+        this.setState({message: message});
       } else {
         this.props.logIn(json);
       };
     })
   }
 
-  // renderMessage = () => {
-  //   const = []
-  //   if (this.state.errors != false) {
-  //     for (var el in this.state.errors){
-  //       errors.push(`${el}: ${this.state.errors[el].join(', ')}`)
-  //     }
-  //     return (
-  //       <div>
-  //       The following errors prevented the creation of the account:
-  //       <br/><br/>
-  //       {errors.map(el => <li>{el}</li>)}
-  //       <br/><br/>
-  //       </div>
-  //     )
-  //   }
-  // }
+  renderMessage = () => {
+    if (this.state.message != false) {
+      return(<p>{this.state.message}</p>)
+    }
+  }
 
   render(){
     return(
       <div>
         <h3>Log In Here!</h3>
+        {this.renderMessage()}
         <form onSubmit={this.handleSubmit}>
         <label>Username: </label>
         <input

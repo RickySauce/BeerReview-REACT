@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 const NavBar = (props) =>
   <div>
+  {console.log(props)}
   <NavLink
      to="/"
    >Home</NavLink>
@@ -18,15 +19,15 @@ const NavBar = (props) =>
      >Log In
      </NavLink>
      <NavLink
-        // onClick={this.props.logOut}
+        onClick={props.logOut}
         to="/logout"
       >Log Out
       </NavLink>
   </div>
 
   const mapDispatchToProps = dispatch => ({
-    logOut:  user => dispatch({type: 'LOG_OUT', user})
+    logOut: () => dispatch({type: 'LOG_OUT'})
   })
 
 
-export default connect(null, mapDispatchToProps) (NavBar);
+export default connect(null, mapDispatchToProps)(NavBar);
