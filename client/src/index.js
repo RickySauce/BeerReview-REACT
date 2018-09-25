@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import SignUpContainer from './user/SignUpContainer';
 import LogInContainer from './user/LogInContainer';
+import BeerContainer from './beers/BeerContainer';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './reducers/rootReducer';
 import { Provider } from 'react-redux';
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route path="/" component={App} />
         <Route exact path="/signup" component={SignUpContainer} />
         <Route exact path="/login" component={LogInContainer} />
+        <Route exact path="/beers" component={BeerContainer} />
       </React.Fragment>
     </Router>
   </Provider>,

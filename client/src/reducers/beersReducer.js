@@ -1,14 +1,17 @@
-export default function beersReducer(state = {beers: []}, action) {
+export default function beersReducer(state = {loading: false, beers: []}, action) {
   switch (action.type) {
 
-    case 'SIGN_UP':
-      return {user: action.user};
+    case 'FETCH_BEERS':
+      return {
+         loading: true,
+         ... state
+      }
 
-    case 'LOG_IN':
-        return {user: action.user};
-
-    case 'LOG_OUT':
-      return {user: ''}
+    case 'GET_BEERS':
+      return {
+        loading: false,
+        beers: action.beers
+      };
 
     default:
       return state;

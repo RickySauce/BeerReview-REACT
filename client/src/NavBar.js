@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 const NavBar = (props) =>
   <div>
-  {console.log(props)}
   <NavLink
      to="/"
    >Home</NavLink>
