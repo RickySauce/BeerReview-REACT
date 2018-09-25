@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchBeers } from '../actions/fetchBeers';
-import BeerPage from './BeerPage';
+import BeerList from './BeerList';
 
 class BeerContainer extends Component {
 
@@ -10,9 +10,9 @@ class BeerContainer extends Component {
   }
 
   render(){
-    console.log(this.props.beers)
     return(
       <div>
+      <BeerList beers={this.props.beers}/>
       </div>
     )
   }
