@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class UserProfile extends Component {
 
   render(){
+    console.log(this.props.user)
     return(
       <div>
       suhhhhh my cheese fry
@@ -11,4 +13,8 @@ class UserProfile extends Component {
   }
 };
 
-export default UserProfile;
+const mapStateToProps = (state) => {
+  return  {user: state.user}
+}
+
+  export default connect(mapStateToProps)(UserProfile);

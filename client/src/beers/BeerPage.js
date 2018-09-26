@@ -13,7 +13,7 @@ class BeerPage extends PureComponent {
 
 
   renderRating = () => {
-    this.state.beer.rating === null ? "Not enough information" : this.state.beer.rating
+    return this.state.beer.rating === null ? "Not enough information" : this.state.beer.rating
   }
 
 
@@ -38,7 +38,6 @@ class BeerPage extends PureComponent {
   }
 
 render(){
-  debugger;
 return (
   <div>
   <h3>{this.state.beer.name}</h3>
