@@ -31,10 +31,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if @review.save
       @review.rating=(@review.rating)
+      @review.save
       @review.beer.rating=(@review.beer.rating)
       @review.beer.save
-      binding.pry
-      @review.save
       render :json => @review, status: 201
     else
        render :json => { :errors => @review.errors}

@@ -1,39 +1,50 @@
 import React, { PureComponent } from 'react';
 import ReviewForm from '../reviews/ReviewForm'
+import ReviewPage from '../reviews/ReviewPage'
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
 class BeerPage extends PureComponent {
     state = {
-      valid_user: false,
+      validUser:  this.props.user.user != false ? true : false,
+      renderForm: false,
       beer: this.props.beers.beers.find(element => {
         return element.id === parseInt(this.props.match.params.beerId) + 1
       })
     }
 
+    componentDidMount() {
+      this.setState({
+        reviewExists: this.state.validUser === true && this.props.user.user.beers.find(el => el.id === this.state.beer.id) !== undefined ? true : false
+      })
+    }
 
   renderRating = () => {
     return this.state.beer.rating === null ? "Not enough information" : this.state.beer.rating
   }
 
 
-  validateUser = (event) => {
+  changeRenderForm = (event) => {
     event.preventDefault
     document.getElementsByTagName('button')[0].setAttribute('hidden', 'true')
     this.setState({
-      valid_user: true
+      renderForm: true
+
     })
   }
 
-  renderForm = () => {
-    if (this.state.valid_user === true){
+  renderReview = () => {
+    if (this.state.renderForm === true){
       return <ReviewForm beer={this.state.beer} user={this.props.user.user}/>
+    } else if (this.state.reviewExists === true){
+      let review = this.props.user.user.reviews.find(el => el.beer_id === this.state.beer.id)
+      return <ReviewPage review={review}/>
     }
   }
 
    renderFormLink = () => {
-    if (this.props.user.user != false &&  this.props.user.user.beers.find(element => element.id === this.beer.id) === undefined){
-      return (<button onClick={this.validateUser}> Review This Beer!</button>)
+    if (this.state.validUser === true &&  this.state.reviewExists === false){
+      return (<button onClick={this.changeRenderForm}> Review This Beer!</button>)
     }
   }
 
@@ -47,7 +58,7 @@ return (
   <br/>
   <p>{this.state.beer.description}</p>
   {this.renderFormLink()}
-  {this.renderForm()}
+  {this.renderReview()}
   </div>
 )
 }

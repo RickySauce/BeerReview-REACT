@@ -11,11 +11,12 @@ export default function userReducer(state = {user: ''}, action) {
       return {user: ''}
 
     case 'ADD_REVIEW':
+    debugger;
     return {
       user: {
-        ...this.state.user,
-        reviews: this.state.user.reviews.concat(action.review),
-        beers: this.state.user.beers.concat(action.review.beer)
+        ...state.user,
+        reviews: state.user.reviews.concat(action.review),
+        beers: state.user.beers.concat(action.review.beer)
       }
     }
 
