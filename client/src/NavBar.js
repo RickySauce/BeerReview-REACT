@@ -4,12 +4,19 @@ import { connect } from 'react-redux';
 
 
 
-const NavBar = (props) =>
+const NavBar = (props) => {
+
+
+  return (
   <div>
   <NavLink
      style={{ margin: "20px"}}
-     to="/"
+     to="/home"
    >Home</NavLink>
+   <NavLink
+      style={{ margin: "20px"}}
+      to="/userprofile"
+    >Home</NavLink>
    <NavLink
       style={{ margin: "20px"}}
       to="/signup"
@@ -37,6 +44,8 @@ const NavBar = (props) =>
         >Beers
         </NavLink>
   </div>
+)
+}
 
   const mapDispatchToProps = dispatch => ({
     logOut: () => dispatch({type: 'LOG_OUT'})

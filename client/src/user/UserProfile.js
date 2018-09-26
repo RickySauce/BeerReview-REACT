@@ -5,7 +5,9 @@ import ReviewPage from '../reviews/ReviewPage'
 const UserProfile = (props) => {
 
 const renderReviews = () => {
-  return props.user.user.reviews.map(el => <ReviewPage review={el}/>)
+  return props.user.user.reviews.map(el =>{
+    return <ReviewPage review={el}/>
+  })
 }
 
     return(
