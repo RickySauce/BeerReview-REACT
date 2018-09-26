@@ -5,6 +5,11 @@ const ReviewPage = (props) => {
 
   let content = props.review.content != false ? props.review.content : "No Entry"
 
+  const dispatchDelete = (event) => {
+    event.preventDefault()
+    props.deleteReview(props.review)
+  }
+
 return (
   <div>
     <h3>{props.review.user.username}'s Review for {props.review.beer.name}</h3>
@@ -17,7 +22,7 @@ return (
     Post:<br/>
       {content}
       <br/>
-      <button>Delete This Review</button>
+      <button onClick={dispatchDelete}>Delete This Review</button>
   </div>
   )
 }

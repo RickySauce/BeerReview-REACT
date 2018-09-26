@@ -10,6 +10,7 @@ const renderReviews = () => {
 
     return(
       <div>
+      {console.log(props.user)}
       {renderReviews()}
       </div>
     )
