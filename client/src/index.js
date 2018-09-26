@@ -19,7 +19,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <React.Fragment>
-        <Route path="/" component={App} />
+        <Route path="/" component={App}/>
         <Route exact path="/signup" component={SignUpContainer} />
         <Route exact path="/login" component={LogInContainer} />
         <Route path="/beers" render={routerProps => <BeerContainer {...routerProps}/>} />

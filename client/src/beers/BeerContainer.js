@@ -18,14 +18,17 @@ class BeerContainer extends Component {
         <Route exact path={this.props.match.url} render={() => (
         <h3>Please select a Beer from the list.</h3>
         )}/>
-        <Route path={`${this.props.match.url}/:beerId`} component={BeerPage}/>
+        <Route path={`${this.props.match.url}/:beerId`} render={routerProps => <BeerPage beers={this.props.beers} user={this.props.user} {...routerProps}/>}/>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  return {beers: state.beers}
+  return {
+    beers: state.beers,
+    user: state.user
+  }
 }
 
 
