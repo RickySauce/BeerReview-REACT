@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 import ReviewForm from '../reviews/ReviewForm'
 import ReviewPage from '../reviews/ReviewPage'
-import { Link } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 
 class BeerPage extends PureComponent {
     state = {

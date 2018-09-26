@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import ReviewPage from '../reviews/ReviewPage'
 
-class UserProfile extends Component {
+const UserProfile = (props) => {
 
-  render(){
-    console.log(this.props.user)
+const renderReviews = () => {
+  return props.user.user.reviews.map(el => <ReviewPage review={el}/>)
+}
+
     return(
       <div>
-      suhhhhh my cheese fry
+      {renderReviews()}
       </div>
     )
   }
-};
+
+
 
 const mapStateToProps = (state) => {
   return  {user: state.user}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const ReviewPage = (props) => {
 
@@ -15,8 +16,14 @@ return (
     <br/><br/>
     Post:<br/>
       {content}
+      <br/>
+      <button>Delete This Review</button>
   </div>
   )
 }
 
-export default ReviewPage;
+const mapDispatchToProps = dispatch => ({
+  deleteReview: review => dispatch({type: 'DELETE_REVIEW', review})
+})
+
+export default connect (null, mapDispatchToProps)(ReviewPage);
