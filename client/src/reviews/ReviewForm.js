@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class ReviewForm extends Component {
 
@@ -22,7 +23,7 @@ class ReviewForm extends Component {
   handleSubmit = (event) => {
   event.preventDefault()
   let data = JSON.stringify({review: this.state})
-    fetch('/users', {
+    fetch('/reviews', {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -36,7 +37,7 @@ class ReviewForm extends Component {
       if (errors !== undefined){
         this.setState({errors});
       } else {
-        this.props.signUp(json);
+        this.props.submitReview(json);
       };
     })
   }
@@ -49,7 +50,7 @@ class ReviewForm extends Component {
       }
       return (
         <div>
-        The following errors prevented the creation of the account:
+        The following errors prevented the submission of the review:
         <br/><br/>
         {errors.map(el => <li>{el}</li>)}
         <br/><br/>
@@ -61,7 +62,7 @@ class ReviewForm extends Component {
   render(){
     return(
       <div>
-        <h3>Sign Up Here!</h3>
+        <h3>Write your review here!</h3>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
         <label>Username: </label>
@@ -99,4 +100,8 @@ class ReviewForm extends Component {
   }
 }
 
-export default ReviewForm;
+const mapDispatchToProps = dispatch => ({
+  submitReview: review => dispatch({type: 'ADD_REVIEW', review})
+})
+
+export default connect(null, mapDispatchToProps)(ReviewForm);

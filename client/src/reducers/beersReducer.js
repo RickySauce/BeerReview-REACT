@@ -3,8 +3,8 @@ export default function beersReducer(state = {loading: false, beers: []}, action
 
     case 'FETCH_BEERS':
       return {
-         loading: true,
-         ... state
+        ...state,
+         loading: true
       }
 
     case 'GET_BEERS':
