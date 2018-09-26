@@ -1,6 +1,4 @@
 class ReviewsController < ApplicationController
-  before_action :require_logged_in, only: [:new, :create, :edit, :update]
-  skip_before_action :verify_authenticity_token, only: [:destroy]
 
   def index
     @reviews = Review.all
@@ -33,6 +31,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if @review.save
       @review.rating=(@review.rating)
+      @review.beer.rating=(@review.beer.rating)
+      @review.beer.save
+      binding.pry
       @review.save
       render :json => @review, status: 201
     else

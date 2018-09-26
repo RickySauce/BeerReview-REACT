@@ -5,8 +5,8 @@ class ReviewForm extends Component {
 
   state = {
     errors: [],
-    user_id: '',
-    beer_id: '',
+    user_id: this.props.user.id,
+    beer_id: this.props.beer.id,
     taste: '',
     look: '',
     smell: '',
@@ -65,33 +65,40 @@ class ReviewForm extends Component {
         <h3>Write your review here!</h3>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
-        <label>Username: </label>
+        <label>Taste: </label>
         <input
-        id="username"
-        name="username"
+        id="taste"
+        name="taste"
+        type="number"
+        value={this.state.taste}
+        onChange={this.handleChange}/><br/><br/>
+        <label>Look: </label>
+        <input
+        id="look"
+        name="look"
+        type="number"
+        value={this.state.look}
+        onChange={this.handleChange}/><br/><br/>
+        <label>Feel: </label>
+        <input
+        id="feel"
+        name="feel"
+        type="number"
+        value={this.state.feel}
+        onChange={this.handleChange}/><br/><br/>
+        <label>Smell: </label>
+        <input
+        id="smell"
+        name="smell"
+        type="number"
+        value={this.state.smell}
+        onChange={this.handleChange}/><br/><br/>
+        <label>Content: </label>
+        <input
+        id="content"
+        name="content"
         type="text"
-        value={this.state.username}
-        onChange={this.handleChange}/><br/><br/>
-        <label>Email: </label>
-        <input
-        id="email"
-        name="email"
-        type="email"
-        value={this.state.email}
-        onChange={this.handleChange}/><br/><br/>
-        <label>Password: </label>
-        <input
-        id="password"
-        name="password"
-        type="password"
-        value={this.state.password}
-        onChange={this.handleChange}/><br/><br/>
-        <label>Password Confirmation: </label>
-        <input
-        id="password_confirmation"
-        name="password_confirmation"
-        type="password"
-        value={this.state.password_confirmation}
+        value={this.state.content}
         onChange={this.handleChange}/><br/><br/>
         <input type="submit"/>
         </form>

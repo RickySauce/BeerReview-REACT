@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import ReviewForm from '../reviews/ReviewForm'
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
-class BeerPage extends Component {
+class BeerPage extends PureComponent {
     state = {
-      valid_user: false
+      valid_user: false,
+      beer: this.props.beers.beers.find(element => {
+        return element.id === parseInt(this.props.match.params.beerId) + 1
+      })
     }
 
-    beer = this.props.beers.beers.find(element => {
-    return element.id === parseInt(this.props.match.params.beerId) + 1
-  })
 
-  rating = this.beer.rating === null ? "Not Enough Information" : this.beer.rating
+  renderRating = () => {
+    this.state.beer.rating === null ? "Not enough information" : this.state.beer.rating
+  }
+
 
   validateUser = (event) => {
     event.preventDefault
@@ -23,9 +26,8 @@ class BeerPage extends Component {
   }
 
   renderForm = () => {
-    debugger;
     if (this.state.valid_user === true){
-      return <ReviewForm/>
+      return <ReviewForm beer={this.state.beer} user={this.props.user.user}/>
     }
   }
 
@@ -36,14 +38,15 @@ class BeerPage extends Component {
   }
 
 render(){
+  debugger;
 return (
   <div>
-  <h3>{this.beer.name}</h3>
-  <p>Style: {this.beer.style}</p>
-  <p>ABV: {this.beer.abv}%</p>
-  <p>Rating: {this.rating}</p>
+  <h3>{this.state.beer.name}</h3>
+  <p>Style: {this.state.beer.style}</p>
+  <p>ABV: {this.state.beer.abv}%</p>
+  <p>Rating: {this.renderRating()}</p>
   <br/>
-  <p>{this.beer.description}</p>
+  <p>{this.state.beer.description}</p>
   {this.renderFormLink()}
   {this.renderForm()}
   </div>

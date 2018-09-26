@@ -13,7 +13,6 @@ class BeerContainer extends Component {
 
   renderLoadingMessage = () => {
     if (this.props.beers.loading === true && this.props.beers.beers.length === 0) {
-      debugger;
       return "Please wait for beer list to load"
     }
   }
@@ -23,10 +22,10 @@ class BeerContainer extends Component {
       <div>
         {this.renderLoadingMessage()}
         <BeerList beers={this.props.beers}/>
-        <Route exact path={this.props.match.url} render={() => (
+        <Route path={this.props.match.url} render={() => (
         <h3>Please select a Beer from the list.</h3>
         )}/>
-        <Route path={`${this.props.match.url}/:beerId`} render={routerProps => <BeerPage beers={this.props.beers} user={this.props.user} {...routerProps}/>}/>
+        <Route exact path={`${this.props.match.url}/:beerId`} render={routerProps => <BeerPage beers={this.props.beers} user={this.props.user} {...routerProps}/>}/>
       </div>
     )
   }
