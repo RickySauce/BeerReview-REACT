@@ -1,21 +1,20 @@
 import React, { PureComponent } from 'react';
-import ReviewForm from '../reviews/ReviewForm'
-import ReviewPage from '../reviews/ReviewPage'
+import ReviewContainer from '../reviews/ReviewContainer'
+import { connect } from 'react-redux';
+
 
 class BeerPage extends PureComponent {
     state = {
-      validUser:  this.props.user.user != false ? true : false,
       renderForm: false,
       beer: this.props.beers.beers.find(element => {
         return element.id === parseInt(this.props.match.params.beerId) + 1
       })
     }
 
-    componentDidMount() {
-      this.setState({
-        reviewExists: this.state.validUser === true && this.props.user.user.beers.find(el => el.id === this.state.beer.id) !== undefined ? true : false
-      })
+    componentDidMount(){
+      this.props.getReview([this.props.user, this.state.beer])
     }
+
 
   renderRating = () => {
     return this.state.beer.rating === null ? "Not enough information" : this.state.beer.rating
@@ -32,21 +31,19 @@ class BeerPage extends PureComponent {
   }
 
   renderReview = () => {
-    if (this.state.renderForm === true){
-      return <ReviewForm beer={this.state.beer} user={this.props.user.user}/>
-    } else if (this.state.reviewExists === true){
-      let review = this.props.user.user.reviews.find(el => el.beer_id === this.state.beer.id)
-      return <ReviewPage review={review}/>
+    if (this.state.renderForm === true) {
+      return <ReviewContainer beer={this.state.beer}/>
     }
   }
 
    renderFormLink = () => {
-    if (this.state.validUser === true &&  this.state.reviewExists === false){
-      return (<button onClick={this.changeRenderForm}> Review This Beer!</button>)
+    if (this.props.review.validUser === true){
+      return (<button onClick={this.changeRenderForm}> Review!</button>)
     }
   }
 
 render(){
+  console.log(this.props.review)
 return (
   <div>
   <h3>{this.state.beer.name}</h3>
@@ -62,5 +59,16 @@ return (
 }
 }
 
+const mapStateToProps = (state) => {
+  return  {
+    review: state.review,
+    user: state.user
+  }
+}
 
-export default BeerPage;
+const mapDispatchToProps = dispatch => ({
+  getReview: (beer) => dispatch({type: 'GET_REVIEW', beer})
+})
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(BeerPage);

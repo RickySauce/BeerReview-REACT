@@ -1,12 +1,12 @@
 import React from 'react';
 import ReviewForm from './ReviewForm'
 import ReviewPage from './ReviewPage'
+import { connect } from 'react-redux';
 
 const ReviewContainer = (props) => {
 
   const renderComponent = () => {
-    let review = this.props.user.reviews.find(element => element.beer_id === this.props.beer.id)
-    return review !== undefined ? <ReviewPage review={review}/> : <ReviewForm user={this.props.user} beer={this.props.beer}/>
+    return props.review.review != false ? <ReviewPage review={props.review.review}/> : <ReviewForm beer={this.props.beer}/>
   }
 
 return (
@@ -17,4 +17,11 @@ return (
   )
 }
 
-export default ReviewContainer;
+const mapStateToProps = (state) => {
+  return  {
+    review: state.review,
+  }
+}
+
+
+export default connect(mapStateToProps)(ReviewContainer);

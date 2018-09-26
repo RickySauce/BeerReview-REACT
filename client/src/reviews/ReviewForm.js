@@ -5,7 +5,7 @@ class ReviewForm extends Component {
 
   state = {
     errors: [],
-    user_id: this.props.user.id,
+    user_id: this.props.user.user.id,
     beer_id: this.props.beer.id,
     taste: '',
     look: '',
@@ -107,8 +107,14 @@ class ReviewForm extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return  {
+    user: state.user,
+  }
+}
+
 const mapDispatchToProps = dispatch => ({
   submitReview: review => dispatch({type: 'ADD_REVIEW', review})
 })
 
-export default connect(null, mapDispatchToProps)(ReviewForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewForm);

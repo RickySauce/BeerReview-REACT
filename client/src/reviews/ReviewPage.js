@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const ReviewPage = (props) => {
-
   let content = props.review.content != false ? props.review.content : "No Entry"
 
   const dispatchDelete = (event) => {
