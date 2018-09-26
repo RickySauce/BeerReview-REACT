@@ -20,7 +20,6 @@ export default function userReducer(state = {user: ''}, action) {
     }
 
     case 'DELETE_REVIEW':
-    debugger;
      const reviews = state.user.reviews.filter(review => review.id !== action.review.id);
      const beers = state.user.beers.filter(beer => beer.id !== action.review.beer_id)
      return {

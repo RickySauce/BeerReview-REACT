@@ -13,10 +13,10 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find_by(id: params["id"])
     @review.destroy
-    flash[:message] = "Successfully deleted review."
-    redirect_to root_path
+    render json: @review
   end
-  #
+
+  @review = Review.find_by(id: 8)
 
   def update
     @review = Review.find_by(id: params["id"])

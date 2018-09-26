@@ -23,7 +23,7 @@ const NavBar = (props) =>
      <NavLink
         style={{ margin: "20px"}}
         onClick={props.logOut}
-        to="/logout"
+        to="/login"
       >Log Out
       </NavLink>
       <NavLink

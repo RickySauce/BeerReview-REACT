@@ -6,7 +6,17 @@ const ReviewPage = (props) => {
 
   const dispatchDelete = (event) => {
     event.preventDefault()
-    props.deleteReview(props.review)
+    fetch(`/reviews/${parseInt(props.review.id)}`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(json => {
+      props.deleteReview(json)
+    });
   }
 
 return (

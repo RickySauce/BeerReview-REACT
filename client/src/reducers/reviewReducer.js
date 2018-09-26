@@ -9,6 +9,19 @@ export default function reviewReducer(state = {validUser: false, review: ''}, ac
           validUser: user != false ? true : false,
           review: review !== undefined ? review : ''
         }
+
+    case 'ADD_REVIEW':
+        return {
+          validUser: true,
+          review: action.review
+        }
+
+    case 'DELETE_REVIEW':
+      return {
+        validUser: false,
+        review: ''
+      };
+
     default:
       return state;
 
