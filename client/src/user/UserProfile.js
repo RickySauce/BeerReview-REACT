@@ -12,6 +12,7 @@ const renderReviews = () => {
 
     return(
       <div>
+      {console.log(props.user)}
       <h3>{props.user.user.username}'s Profile</h3>
       <h4>Their Reviews:</h4>
       {renderReviews()}

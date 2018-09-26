@@ -6,12 +6,12 @@ import { connect } from 'react-redux';
 const ReviewContainer = (props) => {
 
   const renderComponent = () => {
-    return props.review.review !== "" ? <ReviewPage/> : <ReviewForm/>
+    return props.review.review !== "" ? <ReviewPage review={props.review.review}/> : <ReviewForm/>
   }
 
 return (
   <div>
-  {console.log(this.props)}
+  {console.log(props)}
   {renderComponent()}
   </div>
   )

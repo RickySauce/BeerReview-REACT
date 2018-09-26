@@ -12,12 +12,11 @@ class BeerPage extends PureComponent {
 
   changeRenderForm = (event) => {
     event.preventDefault
-    document.getElementsByTagName('button')[0].setAttribute('hidden', 'true')
     this.props.renderForm()
   }
 
   renderReview = () => {
-    if (this.props.renderValid === true) {
+    if (this.props.review.renderForm === true) {
       return <ReviewContainer/>
     }
   }
@@ -29,6 +28,7 @@ class BeerPage extends PureComponent {
   }
 
 render(){
+  console.log(this.props)
 return (
   <div>
   <h3>{this.props.beer.name}</h3>
@@ -49,7 +49,6 @@ const mapStateToProps = (state) => {
     review: state.review,
     user: state.user,
     beer: state.beers.currentBeer,
-    renderValid: state.review.renderForm
   }
 }
 
