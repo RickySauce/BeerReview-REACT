@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SignUpForm extends Component {
+class LogInForm extends Component {
 
   state = {
     message: '',
@@ -69,4 +69,4 @@ class SignUpForm extends Component {
   }
 }
 
-export default SignUpForm;
+export default LogInForm;
