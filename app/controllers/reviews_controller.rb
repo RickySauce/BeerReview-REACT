@@ -32,8 +32,6 @@ class ReviewsController < ApplicationController
     if @review.save
       @review.rating=(@review.rating)
       @review.save
-      @review.beer.rating=(@review.beer.rating)
-      @review.beer.save
       render :json => @review, status: 201
     else
        render :json => { :errors => @review.errors}

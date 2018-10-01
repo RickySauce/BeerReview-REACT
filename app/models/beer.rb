@@ -3,13 +3,18 @@ class Beer < ApplicationRecord
 
 
   def rating
-    if !self.reviews.blank?
+     @rating = 0
      self.reviews.each do |review|
-       @rating.nil? ? @rating = 0 : @rating += review.rating
+       @rating += review.rating
      end
+      if @rating != 0
        @rating /= self.reviews.count
        @rating.round(2)
-    end
+     else
+       @rating = nil
+       @rating
+     end
    end
+
 
  end
