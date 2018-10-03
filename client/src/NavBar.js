@@ -26,12 +26,6 @@ const NavBar = (props) => {
             to="/login"
           >Log Out
           </NavLink>
-          <NavLink
-          className="NavLink"
-             style={{ margin: "20px"}}
-             to="/reviews"
-           >Reviews
-           </NavLink>
            <NavLink
            className="NavLink"
               style={{ margin: "20px"}}
@@ -61,12 +55,6 @@ const NavBar = (props) => {
             to="/login"
           >Log In
           </NavLink>
-          <NavLink
-          className="NavLink"
-             style={{ margin: "20px"}}
-             to="/reviews"
-           >Reviews
-           </NavLink>
            <NavLink
            className="NavLink"
               style={{ margin: "20px"}}
