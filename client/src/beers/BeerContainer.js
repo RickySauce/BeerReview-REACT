@@ -19,7 +19,8 @@ class BeerContainer extends Component {
 
   render(){
     return(
-      <div>
+      <div
+      className="BeerContainer">
         {this.renderLoadingMessage()}
         <BeerList beers={this.props.beers}/>
         <Route path={this.props.match.url} render={() => (

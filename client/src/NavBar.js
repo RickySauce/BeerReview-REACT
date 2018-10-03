@@ -8,27 +8,32 @@ const NavBar = (props) => {
   const renderLinks = () => {
     if (props.user != false){
       return (
-        <div>
+        <div className="NavBar">
         <NavLink
+        className="NavLink"
            style={{ margin: "20px"}}
-           to="/home"
+           to="/"
          >Home</NavLink>
         <NavLink
+        className="NavLink"
            style={{ margin: "20px"}}
            to="/userprofile"
          >User Profile</NavLink>
          <NavLink
+         className="NavLink"
             style={{ margin: "20px"}}
             onClick={props.logOut}
             to="/login"
           >Log Out
           </NavLink>
           <NavLink
+          className="NavLink"
              style={{ margin: "20px"}}
              to="/reviews"
            >Reviews
            </NavLink>
            <NavLink
+           className="NavLink"
               style={{ margin: "20px"}}
               to="/beers"
             >Beers
@@ -37,27 +42,33 @@ const NavBar = (props) => {
       )
     } else {
       return (
-        <div>
+        <div
+        className="NavBar">
         <NavLink
+        className="NavLink"
            style={{ margin: "20px"}}
-           to="/home"
+           to="/"
          >Home</NavLink>
         <NavLink
+        className="NavLink"
            style={{ margin: "20px"}}
            to="/signup"
          >Sign Up
          </NavLink>
          <NavLink
+         className="NavLink"
             style={{ margin: "20px"}}
             to="/login"
           >Log In
           </NavLink>
           <NavLink
+          className="NavLink"
              style={{ margin: "20px"}}
              to="/reviews"
            >Reviews
            </NavLink>
            <NavLink
+           className="NavLink"
               style={{ margin: "20px"}}
               to="/beers"
             >Beers

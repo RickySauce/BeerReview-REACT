@@ -13,7 +13,8 @@ class SignUpContainer extends Component {
   render(){
     console.log(this.props.user)
     return(
-      <div>
+      <div
+      class="SignUpContainer">
       {this.renderComponent()}
       </div>
     )

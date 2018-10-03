@@ -12,7 +12,8 @@ class LogInContainer extends Component {
 
   render(){
     return(
-      <div>
+      <div
+      className="LogInContainer">
       {this.renderComponent()}
       </div>
     )

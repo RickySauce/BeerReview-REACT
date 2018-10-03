@@ -12,12 +12,13 @@ const BeerList = (props) => {
     props.resetForm()
   }
   const renderBeers = Object.keys(props.beers.beers).map(beerId => {
-    return <li><Link key={beerId} data-id={beerId} to={`/beers/${beerId}`} onClick={onSetBeerReview}>{props.beers.beers[beerId].name}</Link></li>
+    return <li><Link className="BeerLink" key={beerId} data-id={beerId} to={`/beers/${beerId}`} onClick={onSetBeerReview}>{props.beers.beers[beerId].name}</Link></li>
     }
   );
 
   return (
-    <div>
+    <div
+    className="BeerList">
     {renderBeers}
     </div>
   );
