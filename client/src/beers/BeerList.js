@@ -1,21 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const BeerList = (props) => {
+class BeerList extends Component {
 
-  const onSetBeerReview = (event) => {
+componentDidMount() {
+  this.setState({
+    props.beers.beers.each(beer =>{
+      debugger;
+    })
+  })
+}
+
+  onSetBeerReview = (event) => {
     let id = parseInt(event.target.dataset.id)
-    let beer = props.beers.beers.find(el => el.id === id + 1)
-    props.setBeer(beer)
-    props.getReview([props.user, beer])
-    props.resetForm()
+    let beer = this.props.beers.beers.find(el => el.id === id + 1)
+    this.props.setBeer(beer)
+    this.props.getReview([this.props.user, beer])
+    this.props.resetForm()
   }
-  const renderBeers = Object.keys(props.beers.beers).map(beerId => {
-    return <li><Link className="BeerLink" key={beerId} data-id={beerId} to={`/beers/${beerId}`} onClick={onSetBeerReview}>{props.beers.beers[beerId].name}</Link></li>
+
+
+render(){
+  const renderBeers = Object.keys(this.props.beers.beers).map(beerId => {
+    return <li><Link className="BeerLink" key={beerId} data-id={beerId} to={`/beers/${beerId}`} onClick={this.onSetBeerReview}>{this.props.beers.beers[beerId].name}</Link> <button type="button" name="beerButton">Like</button> <span></span></li>
     }
   );
-
+  console.log(this.state.beers)
   return (
     <div
     className="BeerList">
@@ -23,6 +34,9 @@ const BeerList = (props) => {
     </div>
   );
 };
+};
+
+
 
 const mapStateToProps = (state) => {
   return  {
