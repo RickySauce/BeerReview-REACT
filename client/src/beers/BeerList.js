@@ -4,13 +4,19 @@ import { connect } from 'react-redux';
 
 class BeerList extends Component {
 
-componentDidMount() {
-  this.setState({
-    props.beers.beers.each(beer =>{
-      debugger;
+  state = {
+    beerIds: this.props.beers.beers.map(beer => {
+      return  0
     })
-  })
-}
+  }
+
+
+  upVote = (event) => {
+    event.preventDefault()
+    let newState = this.state.beerIds
+    newState[event.target.id] = newState[event.target.id] + 1
+    this.setState({beerIds: newState})
+  }
 
   onSetBeerReview = (event) => {
     let id = parseInt(event.target.dataset.id)
@@ -23,10 +29,10 @@ componentDidMount() {
 
 render(){
   const renderBeers = Object.keys(this.props.beers.beers).map(beerId => {
-    return <li><Link className="BeerLink" key={beerId} data-id={beerId} to={`/beers/${beerId}`} onClick={this.onSetBeerReview}>{this.props.beers.beers[beerId].name}</Link> <button type="button" name="beerButton">Like</button> <span></span></li>
+    return <li><Link className="BeerLink" key={beerId} data-id={beerId} to={`/beers/${beerId}`} onClick={this.onSetBeerReview}>{this.props.beers.beers[beerId].name}</Link> <button onClick={this.upVote} id={beerId} type="button" name="beerButton">Like</button> {this.state.beerIds[beerId]}</li>
     }
   );
-  console.log(this.state.beers)
+  console.log(this.state)
   return (
     <div
     className="BeerList">
