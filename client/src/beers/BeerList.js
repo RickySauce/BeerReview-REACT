@@ -6,16 +6,26 @@ class BeerList extends Component {
 
   state = {
     beerIds: this.props.beers.beers.map(beer => {
-      return  0
+      return  beer.likes
     })
   }
 
 
   upVote = (event) => {
     event.preventDefault()
+    let index = event.target.id
     let newState = this.state.beerIds
-    newState[event.target.id] = newState[event.target.id] + 1
+    newState[index] = newState[index] + 1
     this.setState({beerIds: newState})
+    let data = JSON.stringify({likes: newState[index]})
+    fetch(`/beers/${parseInt(index) + 1}`, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "PATCH",
+        body: data
+    })
   }
 
   onSetBeerReview = (event) => {

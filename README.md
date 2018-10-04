@@ -1,24 +1,16 @@
-# README
+Welcome to Beer Review, an interactive Beer Forum designed to allow users to rate beers based on their personal experience.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Installation:
+clone the repo into your terminal.
+in the main directory:
+  run bundle install
+  rake db:seed
+  rake db:migrate
+in client:
+  run npm install
 
-Things you may want to cover:
+to start the server please run rake start
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Demo:
+here is a demo of the app in action:
+https://youtu.be/x18Jx3vanJ8
