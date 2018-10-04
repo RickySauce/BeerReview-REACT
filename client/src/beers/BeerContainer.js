@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchBeers } from '../actions/fetchBeers';
@@ -11,18 +12,21 @@ class BeerContainer extends Component {
     this.props.fetchBeers()
   }
 
-  renderLoadingMessage = () => {
-    if (this.props.beers.loading === true && this.props.beers.beers.length === 0) {
-      return "Please wait for beer list to load"
-    }
+  renderComponent = () => {
+    return this.props.beers.loading === true ? "Please wait for beer list to load" : <BeerList beers={this.props.beers}/>
   }
+
+  // renderLoadingMessage = () => {
+  //   if (this.props.beers.loading === true && this.props.beers.beers.length === 0) {
+  //     return "Please wait for beer list to load"
+  //   }
+  // }
 
   render(){
     return(
       <div
       className="BeerContainer">
-        {this.renderLoadingMessage()}
-        <BeerList beers={this.props.beers}/>
+        {this.renderComponent()}
         <Route path={this.props.match.url} render={() => (
         <h3>Please select a Beer from the list.</h3>
         )}/>

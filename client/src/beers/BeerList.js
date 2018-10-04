@@ -32,7 +32,6 @@ render(){
     return <li><Link className="BeerLink" key={beerId} data-id={beerId} to={`/beers/${beerId}`} onClick={this.onSetBeerReview}>{this.props.beers.beers[beerId].name}</Link> <button onClick={this.upVote} id={beerId} type="button" name="beerButton">Like</button> {this.state.beerIds[beerId]}</li>
     }
   );
-  console.log(this.state)
   return (
     <div
     className="BeerList">
