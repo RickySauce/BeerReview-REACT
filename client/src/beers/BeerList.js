@@ -1,32 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import BeerLink from './BeerLink'
 
 class BeerList extends Component {
 
-  state = {
-    beerIds: this.props.beers.beers.map(beer => {
-      return  beer.likes
-    })
-  }
+  // state = {
+  //   beerIds: this.props.beers.beers.map(beer => {
+  //     return  beer.likes
+  //   })
+  // }
 
 
-  upVote = (event) => {
-    event.preventDefault()
-    let index = event.target.id
-    let newState = this.state.beerIds
-    newState[index] = newState[index] + 1
-    this.setState({beerIds: newState})
-    let data = JSON.stringify({likes: newState[index]})
-    fetch(`/beers/${parseInt(index) + 1}`, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "PATCH",
-        body: data
-    })
-  }
+
 
   onSetBeerReview = (event) => {
     let id = parseInt(event.target.dataset.id)
@@ -36,10 +22,11 @@ class BeerList extends Component {
     this.props.resetForm()
   }
 
+// return <li><Link className="BeerLink" key={beerId} to={`/beers/${beerId}`} onClick={this.onSetBeerReview}>{this.props.beers.beers[beerId].name}</Link> <button onClick={this.upVote} id={beerId} type="button" name="beerButton">Like</button> {this.state.beerIds[beerId]}</li>
 
 render(){
-  const renderBeers = Object.keys(this.props.beers.beers).map(beerId => {
-    return <li><Link className="BeerLink" key={beerId} data-id={beerId} to={`/beers/${beerId}`} onClick={this.onSetBeerReview}>{this.props.beers.beers[beerId].name}</Link> <button onClick={this.upVote} id={beerId} type="button" name="beerButton">Like</button> {this.state.beerIds[beerId]}</li>
+  const renderBeers = this.props.beers.beers.map(beer => {
+    return <BeerLink beer={beer} onSetBeerReview={this.onSetBeerReview}/>
     }
   );
   return (
